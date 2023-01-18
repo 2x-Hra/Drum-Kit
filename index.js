@@ -1,4 +1,6 @@
 const numberOfDrumButtons = document.querySelectorAll(".drum").length;
+
+//Detect mouse event
 for ( var i = 0 ; i < numberOfDrumButtons ; i++ ){
 
 
@@ -6,10 +8,16 @@ for ( var i = 0 ; i < numberOfDrumButtons ; i++ ){
         
         var ButtonInnerHtml = this.textContent;
         
-       
+       makeSound(ButtonInnerHtml);
     });
 
 }
+
+// Detect keyboard event
+document.addEventListener("keydown",function(event){
+    makeSound(event.key);
+    
+});
 
 function makeSound( key ){
     switch ( key ) {
@@ -43,7 +51,7 @@ function makeSound( key ){
             tom1.play();
             break;
         default:
-            console.log(ButtonInnerHtml);
+            console.log(key);
             break;
     }
 }
